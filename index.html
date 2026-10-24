@@ -1,0 +1,3091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive, editorial educational guide to Deductive and Simple Interest for college mathematics students in the Philippines.">
+  <title>Deductive & Simple Interest | Mathematics in the Modern World</title>
+  <style>
+    /* --------------------------------------------------
+       CSS CUSTOM PROPERTIES & THEME CONFIGURATION
+       Editorial Light Palette: Ivory, Cream, Sage Green,
+       Pale Yellow, Charcoal, and Warm Earthy Tones
+    -------------------------------------------------- */
+    :root {
+      --bg-page: #FAF8F5;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3EDE5;
+      --bg-tint-sage: #EDF3EE;
+      --bg-tint-yellow: #FEF9E7;
+      --bg-tag: #EAE3D8;
+
+      --text-main: #23201D;
+      --text-secondary: #59534C;
+      --text-muted: #7E766D;
+      --text-on-accent: #FFFFFF;
+      
+      --accent-sage: #33503C;
+      --accent-sage-hover: #263C2D;
+      --accent-sage-light: #4A6E55;
+      --accent-sage-border: #C8D8CC;
+
+      --accent-yellow-border: #EEDFA3;
+      --accent-yellow-text: #705206;
+
+      --border-light: #E4DCD3;
+      --border-medium: #D1C6B8;
+      --border-strong: #8F8476;
+
+      --status-success-bg: #EAF4EC;
+      --status-success-text: #1E5E2E;
+      --status-success-border: #B2D8BC;
+
+      --status-error-bg: #FDF1F0;
+      --status-error-text: #962821;
+      --status-error-border: #F0BCB8;
+
+      --font-serif: "Charter", "Bitstream Charter", "Iowan Old Style", "Sitka Text", "Cambria", "Georgia", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "Consolas", "Courier New", Courier, monospace;
+
+      --max-width: 980px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+
+      --shadow-subtle: 0 1px 3px rgba(35, 32, 29, 0.05);
+      --shadow-card: 0 2px 8px rgba(35, 32, 29, 0.06);
+      
+      --transition-fast: 160ms ease;
+      --transition-standard: 240ms ease;
+    }
+
+    /* --------------------------------------------------
+       BASE RESET & GLOBAL TYPOGRAPHY
+    -------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Focus accessibility styling */
+    :focus-visible {
+      outline: 2px solid var(--accent-sage);
+      outline-offset: 3px;
+    }
+
+    /* Typography helpers */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      line-height: 1.28;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3.8vw, 2.75rem);
+      margin-bottom: 0.85rem;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1.15rem;
+      color: var(--text-main);
+    }
+
+    p.lead {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    a {
+      color: var(--accent-sage);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      color: var(--accent-sage-hover);
+    }
+
+    ul, ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    code, .mono {
+      font-family: var(--font-mono);
+      font-size: 0.92em;
+    }
+
+    /* --------------------------------------------------
+       LAYOUT CONTAINERS
+    -------------------------------------------------- */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .main-content {
+      flex: 1;
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    .section-block {
+      margin-bottom: 3.75rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.6rem;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--accent-sage);
+      margin-bottom: 0.35rem;
+    }
+
+    /* Editorial card & box styling */
+    .editorial-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .box-subtle {
+      background: var(--bg-subtle);
+      border-color: var(--border-medium);
+    }
+
+    .box-sage {
+      background: var(--bg-tint-sage);
+      border-color: var(--accent-sage-border);
+    }
+
+    .box-yellow {
+      background: var(--bg-tint-yellow);
+      border-color: var(--accent-yellow-border);
+    }
+
+    /* --------------------------------------------------
+       STICKY COMPACT HEADER & PROGRESS BAR
+    -------------------------------------------------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(250, 248, 245, 0.96);
+      border-bottom: 1px solid var(--border-light);
+      backdrop-filter: blur(6px);
+      transition: background-color var(--transition-fast);
+    }
+
+    .reading-progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: transparent;
+    }
+
+    .reading-progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: var(--accent-sage);
+      transition: width 60ms linear;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.75rem;
+    }
+
+    .logo-area {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+
+    .logo-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-subtitle {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-sage);
+      font-weight: 600;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.35rem 0.15rem;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent-sage);
+    }
+
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-sage);
+    }
+
+    .btn-menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 0.45rem 0.65rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .mobile-menu-drawer {
+      display: none;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-medium);
+      padding: 1rem 1.5rem 1.5rem;
+    }
+
+    .mobile-menu-drawer.open {
+      display: block;
+    }
+
+    .nav-mobile-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .nav-mobile-list .nav-link {
+      display: block;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none;
+      }
+      .btn-menu-toggle {
+        display: block;
+      }
+    }
+
+    /* --------------------------------------------------
+       SECTION 3: HERO & LEARNING OBJECTIVES
+    -------------------------------------------------- */
+    .hero-editorial {
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 3rem;
+    }
+
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .objective-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent-sage);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.15rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .objective-card strong {
+      display: block;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+      font-size: 0.98rem;
+    }
+
+    .concept-preview-bar {
+      margin-top: 1.75rem;
+      background-color: var(--bg-tint-sage);
+      border: 1px solid var(--accent-sage-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .concept-preview-text {
+      flex: 1 1 300px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .concept-preview-pill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--accent-sage-border);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-sage);
+      font-weight: 600;
+    }
+
+    /* --------------------------------------------------
+       SECTION 4: CONCEPT EXPLANATION
+    -------------------------------------------------- */
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      margin: 1.5rem 0 2rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+    }
+
+    table.editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.94rem;
+    }
+
+    table.editorial-table th,
+    table.editorial-table td {
+      padding: 0.85rem 1.15rem;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+    }
+
+    table.editorial-table th {
+      background-color: var(--bg-subtle);
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    table.editorial-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.editorial-table tr:hover td {
+      background-color: #FAF6F0;
+    }
+
+    .key-terms-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .term-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+    }
+
+    .term-item h4 {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-sage);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .term-symbol {
+      font-family: var(--font-mono);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+    }
+
+    /* --------------------------------------------------
+       SECTION 5: FORMULAS
+    -------------------------------------------------- */
+    .formula-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .formula-entry {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .formula-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--accent-sage);
+      background: var(--bg-tint-sage);
+      border: 1px solid var(--accent-sage-border);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .math-display {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent-sage);
+      background: var(--bg-subtle);
+      border-left: 4px solid var(--accent-sage);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-sm);
+      margin: 0.85rem 0 1.25rem;
+      display: inline-block;
+      min-width: 260px;
+    }
+
+    .math-variable-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.85rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .var-desc {
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .var-desc code {
+      font-weight: 700;
+      color: var(--accent-sage);
+    }
+
+    .formula-context-note {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      background: var(--bg-tint-yellow);
+      border-left: 3px solid #D8BC40;
+      padding: 0.75rem 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 1rem;
+    }
+
+    /* --------------------------------------------------
+       SECTION 6: SOLVED EXAMPLES & MANDATORY PHILIPPINE EXAMPLE
+    -------------------------------------------------- */
+    .solved-example-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .example-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .example-title {
+      font-size: 1.2rem;
+      font-family: var(--font-serif);
+      color: var(--text-main);
+    }
+
+    .example-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-medium);
+    }
+
+    .example-badge.highlight {
+      background: var(--bg-tint-yellow);
+      border-color: var(--accent-yellow-border);
+      color: var(--accent-yellow-text);
+    }
+
+    .problem-prompt {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-main);
+      background: var(--bg-page);
+      padding: 1.15rem;
+      border-left: 3px solid var(--accent-sage);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 1.35rem;
+    }
+
+    .steps-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .step-row {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.94rem;
+    }
+
+    .step-marker {
+      flex: 0 0 5.5rem;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-sage);
+      padding-top: 0.15rem;
+    }
+
+    .step-content {
+      flex: 1;
+      color: var(--text-secondary);
+    }
+
+    .step-content strong {
+      color: var(--text-main);
+    }
+
+    .step-math {
+      font-family: var(--font-mono);
+      color: var(--text-main);
+      background: var(--bg-subtle);
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    .example-final-answer {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-tint-sage);
+      border: 1px solid var(--accent-sage-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .example-final-answer h4 {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-sage);
+      margin-bottom: 0.35rem;
+    }
+
+    .example-final-answer p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--text-main);
+    }
+
+    /* --------------------------------------------------
+       SECTION 7: INTERACTIVE EXAMPLE EXPLORER
+    -------------------------------------------------- */
+    .explorer-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .explorer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-medium);
+    }
+
+    .explorer-tab-btn {
+      flex: 1 1 auto;
+      min-width: 140px;
+      padding: 0.9rem 1.15rem;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border-light);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: center;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .explorer-tab-btn:hover {
+      background: #EBE4DA;
+      color: var(--text-main);
+    }
+
+    .explorer-tab-btn.active {
+      background: var(--bg-surface);
+      color: var(--accent-sage);
+      border-bottom: 2px solid var(--accent-sage);
+      margin-bottom: -1px;
+    }
+
+    .explorer-body {
+      padding: 1.75rem;
+    }
+
+    .explorer-controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+      gap: 0.75rem;
+    }
+
+    .solution-panel {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+
+    .solution-panel.revealed {
+      display: block;
+      animation: fadeIn 200ms ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --------------------------------------------------
+       SECTION 8: DEDUCTIVE & SIMPLE INTEREST CALCULATOR
+    -------------------------------------------------- */
+    .calculator-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .calc-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group .field-hint {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .input-affix-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .input-affix {
+      position: absolute;
+      left: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    input.calc-input,
+    select.calc-select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    input.calc-input.has-affix {
+      padding-left: 2rem;
+    }
+
+    input.calc-input:focus,
+    select.calc-select:focus {
+      outline: none;
+      border-color: var(--accent-sage);
+      box-shadow: 0 0 0 3px rgba(51, 80, 60, 0.12);
+    }
+
+    select.calc-select {
+      font-family: var(--font-sans);
+      cursor: pointer;
+    }
+
+    .radio-pill-group {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-subtle);
+      padding: 0.3rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .radio-pill-label {
+      flex: 1;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.6rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .radio-pill-label input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-pill-label.active {
+      background: var(--bg-surface);
+      color: var(--accent-sage);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .calc-btn-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.25rem;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background-color: var(--accent-sage);
+      color: var(--text-on-accent);
+      border-color: var(--accent-sage);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-sage-hover);
+      color: var(--text-on-accent);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border-color: var(--border-medium);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-subtle);
+    }
+
+    .btn-small {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .calc-results-pane {
+      background-color: var(--bg-page);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .result-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-sage);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-data-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    .result-data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.92rem;
+      border-bottom: 1px dashed var(--border-light);
+      padding-bottom: 0.4rem;
+    }
+
+    .result-data-row:last-child {
+      border-bottom: none;
+    }
+
+    .result-data-row.highlight-row {
+      border-bottom: 2px solid var(--accent-sage);
+      padding-top: 0.35rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+    }
+
+    .result-value {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 1.05rem;
+    }
+
+    .result-value.large {
+      font-size: 1.35rem;
+      color: var(--accent-sage);
+    }
+
+    .calc-explanation {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .calc-presets {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .preset-pill {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 0.25rem 0.55rem;
+      cursor: pointer;
+      color: var(--text-main);
+      font-weight: 500;
+      transition: background-color var(--transition-fast);
+    }
+
+    .preset-pill:hover {
+      background: #EAE2D8;
+    }
+
+    .calc-error {
+      background: var(--status-error-bg);
+      border: 1px solid var(--status-error-border);
+      color: var(--status-error-text);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* --------------------------------------------------
+       SECTION 9: PRACTICE ACTIVITIES
+    -------------------------------------------------- */
+    .practice-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .practice-meta-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .practice-indicator {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--accent-sage);
+    }
+
+    .question-prompt {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+    }
+
+    .options-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .practice-option-label {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.9rem 1.15rem;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .practice-option-label:hover {
+      background: #F5EFE7;
+      border-color: var(--border-medium);
+    }
+
+    .practice-option-label.selected {
+      border-color: var(--accent-sage);
+      background: var(--bg-tint-sage);
+    }
+
+    .practice-option-label.correct {
+      border-color: var(--status-success-border);
+      background: var(--status-success-bg);
+      color: var(--status-success-text);
+      font-weight: 600;
+    }
+
+    .practice-option-label.incorrect {
+      border-color: var(--status-error-border);
+      background: var(--status-error-bg);
+      color: var(--status-error-text);
+    }
+
+    .practice-feedback {
+      padding: 1.15rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .practice-feedback.show {
+      display: block;
+      animation: fadeIn 200ms ease;
+    }
+
+    .practice-feedback.success {
+      background: var(--status-success-bg);
+      border: 1px solid var(--status-success-border);
+      color: var(--status-success-text);
+    }
+
+    .practice-feedback.error {
+      background: var(--status-error-bg);
+      border: 1px solid var(--status-error-border);
+      color: var(--status-error-text);
+    }
+
+    .practice-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.25rem;
+    }
+
+    /* --------------------------------------------------
+       SECTION 10: INTERACTIVE FINAL QUIZ
+    -------------------------------------------------- */
+    .quiz-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .quiz-progress-bar-container {
+      height: 6px;
+      background: var(--bg-subtle);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      width: 10%;
+      background: var(--accent-sage);
+      transition: width var(--transition-standard);
+    }
+
+    .quiz-score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+    }
+
+    .quiz-results-screen {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .quiz-results-screen.show {
+      display: block;
+      animation: fadeIn 240ms ease;
+    }
+
+    .score-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--bg-tint-sage);
+      border: 3px solid var(--accent-sage);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem auto;
+    }
+
+    .score-circle-num {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-sage);
+      line-height: 1;
+    }
+
+    .score-circle-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    .quiz-summary-table-wrapper {
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    /* --------------------------------------------------
+       SECTION 11: COMMON MISTAKES
+    -------------------------------------------------- */
+    .mistakes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .mistake-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      position: relative;
+    }
+
+    .mistake-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--status-error-text);
+      background: var(--status-error-bg);
+      border: 1px solid var(--status-error-border);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .mistake-desc {
+      font-size: 0.94rem;
+      color: var(--text-main);
+      margin-bottom: 0.85rem;
+    }
+
+    .mistake-correction {
+      font-size: 0.88rem;
+      color: var(--status-success-text);
+      background: var(--status-success-bg);
+      border-left: 3px solid var(--status-success-border);
+      padding: 0.65rem 0.85rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    /* --------------------------------------------------
+       SECTION 12: EVERYDAY APPLICATIONS
+    -------------------------------------------------- */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .app-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .app-card h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .app-context-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-sage);
+      background: var(--bg-tint-sage);
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.65rem;
+      font-weight: 600;
+    }
+
+    /* --------------------------------------------------
+       SECTION 13: SUMMARY & KEY TAKEAWAYS
+    -------------------------------------------------- */
+    .summary-box {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+    }
+
+    .summary-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* --------------------------------------------------
+       SECTION 14: FOOTER
+    -------------------------------------------------- */
+    .site-footer {
+      background-color: var(--bg-subtle);
+      border-top: 1px solid var(--border-medium);
+      padding: 3rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text-main);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION
+  =========================================== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#intro" class="logo-area" aria-label="Home: Deductive and Simple Interest Guide">
+        <span class="logo-title">Financial Mathematics</span>
+        <span class="logo-subtitle">Deductive & Simple Interest</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Main Navigation">
+        <a href="#learn" class="nav-link">Learn</a>
+        <a href="#formulas" class="nav-link">Formulas</a>
+        <a href="#examples" class="nav-link">Examples</a>
+        <a href="#calculator" class="nav-link">Calculator</a>
+        <a href="#practice" class="nav-link">Practice</a>
+        <a href="#quiz" class="nav-link">Quiz</a>
+      </nav>
+
+      <button type="button" class="btn-menu-toggle" id="btnMenuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle Navigation Menu">
+        Menu
+      </button>
+    </div>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress-track" aria-hidden="true">
+      <div class="reading-progress-bar" id="readingProgressBar"></div>
+    </div>
+
+    <!-- Responsive Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenu" aria-label="Mobile Navigation">
+      <ul class="nav-mobile-list">
+        <li><a href="#learn" class="nav-link mobile-nav-link">Learn Concepts</a></li>
+        <li><a href="#formulas" class="nav-link mobile-nav-link">Formulas Reference</a></li>
+        <li><a href="#examples" class="nav-link mobile-nav-link">Worked Examples</a></li>
+        <li><a href="#calculator" class="nav-link mobile-nav-link">Interest Calculator</a></li>
+        <li><a href="#practice" class="nav-link mobile-nav-link">Practice Activities</a></li>
+        <li><a href="#quiz" class="nav-link mobile-nav-link">Final Quiz</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT CONTAINER
+  =========================================== -->
+  <main class="main-content" id="mainContent">
+    <div class="container">
+
+      <!-- ==========================================
+           SECTION 3: INTRODUCTION & LEARNING OBJECTIVES
+      =========================================== -->
+      <section class="section-block hero-editorial" id="intro" aria-labelledby="intro-heading">
+        <span class="section-kicker">Mathematics in the Modern World</span>
+        <h1 id="intro-heading">Understanding Deductive and Simple Interest</h1>
+        <p class="lead">
+          In financial mathematics, interest represents the cost of using borrowed money or the return on deposited capital over time. While ordinary simple interest is paid at the conclusion of a loan term, <strong>deductive interest</strong> (frequently termed <em>interest in advance</em> or <em>bank discount</em>) is deducted upfront at the moment funds are released.
+        </p>
+
+        <div class="concept-preview-bar">
+          <p class="concept-preview-text">
+            <strong>Key Distinction:</strong> When borrowing ₱10,000 under ordinary simple interest, you receive ₱10,000 on day one and pay back the principal plus interest at maturity. Under <em>deductive interest</em>, the interest is subtracted immediately from your loan proceeds.
+          </p>
+          <div class="concept-preview-pill">
+            Net Proceeds = P - I
+          </div>
+        </div>
+
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <strong>1. Define Core Variables</strong>
+            Distinguish clearly between Principal (\(P\)), Rate (\(r\)), Time (\(t\)), Interest (\(I\)), and Maturity Value (\(A\)).
+          </div>
+          <div class="objective-card">
+            <strong>2. Compute Deductive Amounts</strong>
+            Calculate upfront deductions, loan proceeds, and understand how they differ from maturity payments.
+          </div>
+          <div class="objective-card">
+            <strong>3. Evaluate Effective Rates</strong>
+            Recognize why upfront deductions increase the true effective borrowing cost (EIR) under Philippine consumer law.
+          </div>
+          <div class="objective-card">
+            <strong>4. Solve Philippine Scenarios</strong>
+            Apply formulas to realistic Philippine peso (₱) problems involving savings deposits, microloans, and bank promissory notes.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 4: CONCEPT EXPLANATION
+      =========================================== -->
+      <section class="section-block" id="learn" aria-labelledby="learn-heading">
+        <div class="section-header">
+          <span class="section-kicker">Foundational Concepts</span>
+          <h2 id="learn-heading">How Mathematical Interest Operates</h2>
+        </div>
+
+        <p>
+          Whenever capital is borrowed or invested, the party utilizing the money pays a rental fee known as <strong>interest</strong>. In college business mathematics, the two most common elementary structures of simple interest are <strong>Ordinary (Add-On) Simple Interest</strong> and <strong>Deductive Interest (Discount in Advance)</strong>.
+        </p>
+
+        <!-- Comparison Table -->
+        <div class="comparison-table-wrapper">
+          <table class="editorial-table" aria-label="Comparison between Ordinary Simple Interest and Deductive Interest">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Ordinary Simple Interest (Add-on)</th>
+                <th scope="col">Deductive Interest (In Advance)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>When Interest is Paid</strong></td>
+                <td>Paid at the end of the term (maturity date).</td>
+                <td>Deducted immediately on day 1 (drawdown date).</td>
+              </tr>
+              <tr>
+                <td><strong>Cash Received by Borrower</strong></td>
+                <td>Full Face Value / Principal (\(P\)).</td>
+                <td>Net Proceeds (\(P - I\)), which is less than Face Value.</td>
+              </tr>
+              <tr>
+                <td><strong>Repayment at Maturity</strong></td>
+                <td>Principal plus Interest: \(A = P + I\).</td>
+                <td>Face Value (\(P\)), since interest was already paid upfront.</td>
+              </tr>
+              <tr>
+                <td><strong>Common Use Cases</strong></td>
+                <td>Bank savings accounts, time deposits, personal loans.</td>
+                <td>Promissory notes, commercial paper, salary advances, microloans.</td>
+              </tr>
+              <tr>
+                <td><strong>Effective Interest Rate (EIR)</strong></td>
+                <td>Equal to the nominal contractual rate (\(r\)).</td>
+                <td><strong>Higher</strong> than the nominal rate, because you hold less cash.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Essential Mathematical Terminology</h3>
+        <p>
+          Before performing any calculations, students must master the precise definitions of each financial parameter:
+        </p>
+
+        <div class="key-terms-list">
+          <div class="term-item">
+            <h4>Principal (Face Value) <span class="term-symbol">P</span></h4>
+            <p class="field-hint" style="font-size: 0.9rem;">The initial capital invested, deposited, or the stated face value of a loan note in Philippine pesos (₱).</p>
+          </div>
+          <div class="term-item">
+            <h4>Annual Interest Rate <span class="term-symbol">r</span></h4>
+            <p class="field-hint" style="font-size: 0.9rem;">The percentage charged or earned per annum. It must always be converted into a decimal fraction before computation (e.g., \(5\% = 0.05\)).</p>
+          </div>
+          <div class="term-item">
+            <h4>Time or Term <span class="term-symbol">t</span></h4>
+            <p class="field-hint" style="font-size: 0.9rem;">The length of the loan or deposit expressed strictly in <strong>years</strong>. If given in months, divide by 12 (e.g., 6 months = 0.5 years).</p>
+          </div>
+          <div class="term-item">
+            <h4>Interest Amount <span class="term-symbol">I</span></h4>
+            <p class="field-hint" style="font-size: 0.9rem;">The quantitative peso fee earned by the lender or paid by the borrower for the use of the principal.</p>
+          </div>
+          <div class="term-item">
+            <h4>Total Maturity Amount <span class="term-symbol">A</span></h4>
+            <p class="field-hint" style="font-size: 0.9rem;">The cumulative balance at the end of the term in ordinary interest, equal to the principal plus accumulated interest (\(P + I\)).</p>
+          </div>
+          <div class="term-item">
+            <h4>Net Proceeds <span class="term-symbol">Proceeds</span></h4>
+            <p class="field-hint" style="font-size: 0.9rem;">In deductive interest loans, the actual cash handed to the borrower on day one after upfront interest is deducted (\(P - I\)).</p>
+          </div>
+        </div>
+
+        <div class="editorial-box box-yellow" style="margin-top: 1.75rem;">
+          <h4 style="font-family: var(--font-sans); color: var(--accent-yellow-text); margin-bottom: 0.35rem;">Why Deductive Interest Matters to Filipino Consumers</h4>
+          <p style="margin: 0; font-size: 0.92rem; color: #503E0B;">
+            Under Republic Act No. 3765 (The Philippine Truth in Lending Act), creditors must issue a full Disclosure Statement before a contract is signed. Because deducting interest upfront means you receive less than the face amount, the <strong>Effective Interest Rate (EIR)</strong> is always higher than advertised. College students must know how to uncover the true cost of credit.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 5: FORMULAS REFERENCE
+      =========================================== -->
+      <section class="section-block" id="formulas" aria-labelledby="formulas-heading">
+        <div class="section-header">
+          <span class="section-kicker">Mathematical Reference</span>
+          <h2 id="formulas-heading">Formulas and Algebraic Derivations</h2>
+        </div>
+
+        <p>
+          All calculations for simple interest and deductive interest stem from linear algebra. Below is the complete mathematical toolkit required for college examinations.
+        </p>
+
+        <div class="formula-showcase">
+          <!-- Formula 1: Simple Interest -->
+          <article class="formula-entry" aria-labelledby="f1-title">
+            <span class="formula-tag">Core Calculation</span>
+            <h3 id="f1-title">1. Simple Interest Formula</h3>
+            <p>Calculates the monetary interest charged or earned over a duration \(t\) on principal \(P\).</p>
+            <div class="math-display">I = P &times; r &times; t</div>
+
+            <div class="math-variable-grid">
+              <div class="var-desc"><code>I</code> = Interest in Philippine pesos (₱)</div>
+              <div class="var-desc"><code>P</code> = Principal or face value (₱)</div>
+              <div class="var-desc"><code>r</code> = Annual rate as decimal (e.g., 0.04)</div>
+              <div class="var-desc"><code>t</code> = Duration in years (\(\text{months} / 12\))</div>
+            </div>
+
+            <p class="formula-context-note">
+              <strong>Application Condition:</strong> Use when interest does not compound periodically and rate is given on a yearly (per annum) basis.
+            </p>
+          </article>
+
+          <!-- Formula 2: Total Amount (Maturity Value) -->
+          <article class="formula-entry" aria-labelledby="f2-title">
+            <span class="formula-tag">Maturity Value</span>
+            <h3 id="f2-title">2. Total Amount (Maturity Value)</h3>
+            <p>Calculates the total balance accumulated in a savings account or owed on an ordinary loan at maturity.</p>
+            <div class="math-display">A = P + I = P(1 + rt)</div>
+
+            <div class="math-variable-grid">
+              <div class="var-desc"><code>A</code> = Total future amount (₱)</div>
+              <div class="var-desc"><code>P</code> = Original principal (₱)</div>
+              <div class="var-desc"><code>(1 + rt)</code> = Linear growth multiplier</div>
+            </div>
+
+            <p class="formula-context-note">
+              <strong>Algebraic Derivation:</strong> Substituting \(I = Prt\) into \(A = P + I\) yields \(A = P + Prt\). Factoring out \(P\) produces \(A = P(1 + rt)\).
+            </p>
+          </article>
+
+          <!-- Formula 3: Deductive Interest & Net Proceeds -->
+          <article class="formula-entry" aria-labelledby="f3-title">
+            <span class="formula-tag">Deductive Method</span>
+            <h3 id="f3-title">3. Deductive Loan Proceeds & Effective Rate</h3>
+            <p>Calculates the upfront interest deduction, the cash proceeds released to the borrower, and the true effective rate.</p>
+            <div class="math-display">Proceeds = P - I = P(1 - rt)</div>
+            <div class="math-display" style="border-left-color: #B58900; color: #705206;">r<sub>eff</sub> = I &divide; (Proceeds &times; t)</div>
+
+            <div class="math-variable-grid">
+              <div class="var-desc"><code>Proceeds</code> = Net cash received on day 1 (₱)</div>
+              <div class="var-desc"><code>P</code> = Face value repaid at maturity (₱)</div>
+              <div class="var-desc"><code>r<sub>eff</sub></code> = True Effective Annual Interest Rate (EIR)</div>
+            </div>
+
+            <p class="formula-context-note">
+              <strong>Key Rule:</strong> Because the borrower only utilizes the <em>Proceeds</em> while paying interest calculated on the full <em>Principal</em>, \(r_{\text{eff}}\) is strictly greater than nominal \(r\).
+            </p>
+          </article>
+
+          <!-- Formula 4: Solving for Unknown Variables -->
+          <article class="formula-entry" aria-labelledby="f4-title">
+            <span class="formula-tag">Algebraic Rearrangements</span>
+            <h3 id="f4-title">4. Formulas for Unknown Variables</h3>
+            <p>When interest is known but one of the other parameters is missing, rearrange \(I = Prt\):</p>
+            
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+              <div class="math-display" style="font-size: 1.15rem; min-width: 180px; margin: 0;">P = I &divide; (r &times; t)</div>
+              <div class="math-display" style="font-size: 1.15rem; min-width: 180px; margin: 0;">r = I &divide; (P &times; t)</div>
+              <div class="math-display" style="font-size: 1.15rem; min-width: 180px; margin: 0;">t = I &divide; (P &times; r)</div>
+            </div>
+            <p class="formula-context-note">
+              <strong>Time Check:</strong> Remember that solving for \(t\) always gives the time in <em>years</em>. To convert into months, multiply \(t\) by 12.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 6: STEP-BY-STEP WORKED EXAMPLES
+      =========================================== -->
+      <section class="section-block" id="examples" aria-labelledby="examples-heading">
+        <div class="section-header">
+          <span class="section-kicker">Detailed Walkthroughs</span>
+          <h2 id="examples-heading">Step-by-Step Worked Solutions</h2>
+        </div>
+
+        <p>
+          Study each step to observe how values are identified, converted, substituted, and interpreted in Philippine peso financial scenarios.
+        </p>
+
+        <!-- MANDATORY PHILIPPINE EXAMPLE -->
+        <article class="solved-example-card" aria-labelledby="ex-maria-title">
+          <div class="example-header">
+            <h3 class="example-title" id="ex-maria-title">Example 1: Maria's Savings Deposit</h3>
+            <span class="example-badge highlight">Mandatory College Benchmark</span>
+          </div>
+
+          <div class="problem-prompt">
+            <strong>Problem Statement:</strong> Maria deposits ₱5,000 into a savings account that earns 4% simple interest per year for 2 years. How much interest will she earn, and what will her total balance be after two years?
+          </div>
+
+          <div class="steps-stack">
+            <div class="step-row">
+              <div class="step-marker">Step 1</div>
+              <div class="step-content">
+                <strong>Identify the given values:</strong><br>
+                Principal: <span class="step-math">P = &#8369;5,000</span><br>
+                Annual interest rate: <span class="step-math">r = 4% = 0.04</span><br>
+                Time: <span class="step-math">t = 2 years</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 2</div>
+              <div class="step-content">
+                <strong>Select the formula:</strong><br>
+                <span class="step-math">I = Prt</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 3</div>
+              <div class="step-content">
+                <strong>Substitute the values:</strong><br>
+                <span class="step-math">I = 5,000 &times; 0.04 &times; 2</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 4</div>
+              <div class="step-content">
+                <strong>Calculate the interest:</strong><br>
+                <span class="step-math">I = &#8369;400</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 5</div>
+              <div class="step-content">
+                <strong>Calculate the total amount:</strong><br>
+                <span class="step-math">A = P + I</span><br>
+                <span class="step-math">A = &#8369;5,000 + &#8369;400 = &#8369;5,400</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-final-answer">
+            <h4>Final Answer &amp; Interpretation</h4>
+            <p>
+              Maria earns <strong>&#8369;400</strong> in simple interest. Her total balance after two years is <strong>&#8369;5,400</strong>, assuming no additional deposits, withdrawals, or administrative fees.
+            </p>
+          </div>
+        </article>
+
+        <!-- EXAMPLE 2: DEDUCTIVE LOAN IN ADVANCE -->
+        <article class="solved-example-card" aria-labelledby="ex-deductive-title">
+          <div class="example-header">
+            <h3 class="example-title" id="ex-deductive-title">Example 2: Deductive Loan with Upfront Discount</h3>
+            <span class="example-badge">Deductive Method</span>
+          </div>
+
+          <div class="problem-prompt">
+            <strong>Problem Statement:</strong> Angelo borrows ₱20,000 from a financing company for 1 year at an 8% deductive interest rate (interest collected in advance). Compute: (a) the upfront interest deduction, (b) the net proceeds Angelo receives on day one, (c) his repayment at maturity, and (d) the true effective annual interest rate.
+          </div>
+
+          <div class="steps-stack">
+            <div class="step-row">
+              <div class="step-marker">Step 1</div>
+              <div class="step-content">
+                <strong>Identify the given parameters:</strong><br>
+                Face Value (Principal): <span class="step-math">P = &#8369;20,000</span><br>
+                Contract Rate: <span class="step-math">r = 8% = 0.08</span><br>
+                Term: <span class="step-math">t = 1 year</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 2</div>
+              <div class="step-content">
+                <strong>Calculate interest deducted in advance (\(I\)):</strong><br>
+                <span class="step-math">I = Prt = 20,000 &times; 0.08 &times; 1 = &#8369;1,600</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 3</div>
+              <div class="step-content">
+                <strong>Calculate the net cash proceeds delivered to Angelo:</strong><br>
+                <span class="step-math">Proceeds = P - I = &#8369;20,000 - &#8369;1,600 = &#8369;18,400</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 4</div>
+              <div class="step-content">
+                <strong>Determine repayment at maturity:</strong><br>
+                Because interest was already taken upfront, Angelo pays the face value of <span class="step-math">&#8369;20,000</span> at the end of the year.
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 5</div>
+              <div class="step-content">
+                <strong>Calculate the true Effective Interest Rate (EIR):</strong><br>
+                Angelo paid ₱1,600 to hold and use only ₱18,400 for 1 year:<br>
+                <span class="step-math">r<sub>eff</sub> = I &divide; (Proceeds &times; t) = 1,600 &divide; (18,400 &times; 1) &asymp; 0.086957 = 8.70%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-final-answer">
+            <h4>Final Answer &amp; Interpretation</h4>
+            <p>
+              Angelo receives <strong>&#8369;18,400</strong> at drawdown and repays <strong>&#8369;20,000</strong> at maturity. While the nominal contract stated 8%, Angelo's true borrowing rate was <strong>8.70%</strong>.
+            </p>
+          </div>
+        </article>
+
+        <!-- EXAMPLE 3: SHORT-TERM TIME DEPOSIT IN MONTHS -->
+        <article class="solved-example-card" aria-labelledby="ex-time-title">
+          <div class="example-header">
+            <h3 class="example-title" id="ex-time-title">Example 3: Time Deposit with Duration in Months</h3>
+            <span class="example-badge">Unit Conversion</span>
+          </div>
+
+          <div class="problem-prompt">
+            <strong>Problem Statement:</strong> Juan places ₱25,000 in a rural bank special time deposit earning 3.6% simple interest per year for 9 months. What is the total interest earned and the final maturity amount?
+          </div>
+
+          <div class="steps-stack">
+            <div class="step-row">
+              <div class="step-marker">Step 1</div>
+              <div class="step-content">
+                <strong>Convert time to years:</strong><br>
+                Since 1 year = 12 months, <span class="step-math">t = 9 &divide; 12 = 0.75 years</span>.<br>
+                Rate: <span class="step-math">r = 3.6% = 0.036</span>. Principal: <span class="step-math">P = &#8369;25,000</span>.
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 2</div>
+              <div class="step-content">
+                <strong>Calculate simple interest:</strong><br>
+                <span class="step-math">I = Prt = 25,000 &times; 0.036 &times; 0.75 = &#8369;675.00</span>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-marker">Step 3</div>
+              <div class="step-content">
+                <strong>Calculate the maturity value:</strong><br>
+                <span class="step-math">A = P + I = &#8369;25,000 + &#8369;675 = &#8369;25,675.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-final-answer">
+            <h4>Final Answer &amp; Interpretation</h4>
+            <p>
+              Juan earns <strong>&#8369;675.00</strong> in interest. At the end of 9 months, he withdraws a total balance of <strong>&#8369;25,675.00</strong>.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==========================================
+           SECTION 7: INTERACTIVE EXAMPLE EXPLORER
+      =========================================== -->
+      <section class="section-block" id="explorer" aria-labelledby="explorer-heading">
+        <div class="section-header">
+          <span class="section-kicker">Interactive Exploration</span>
+          <h2 id="explorer-heading">Interactive Example Explorer</h2>
+        </div>
+        <p>
+          Select any case study below to inspect the financial statement, examine the known variables, and test your ability to solve before revealing the step-by-step breakdown.
+        </p>
+
+        <div class="explorer-container">
+          <div class="explorer-nav" role="tablist" aria-label="Example Scenarios">
+            <button type="button" class="explorer-tab-btn active" role="tab" id="tab0" aria-selected="true" aria-controls="panelExplorer" onclick="loadExplorerExample(0)">
+              Case A: Sari-Sari Loan
+            </button>
+            <button type="button" class="explorer-tab-btn" role="tab" id="tab1" aria-selected="false" aria-controls="panelExplorer" onclick="loadExplorerExample(1)">
+              Case B: Missing Interest Rate
+            </button>
+            <button type="button" class="explorer-tab-btn" role="tab" id="tab2" aria-selected="false" aria-controls="panelExplorer" onclick="loadExplorerExample(2)">
+              Case C: Tuition Installment Note
+            </button>
+            <button type="button" class="explorer-tab-btn" role="tab" id="tab3" aria-selected="false" aria-controls="panelExplorer" onclick="loadExplorerExample(3)">
+              Case D: Finding Initial Principal
+            </button>
+          </div>
+
+          <div class="explorer-body" id="panelExplorer" role="tabpanel" aria-labelledby="tab0">
+            <h3 id="explorerTitle" style="font-size: 1.2rem; margin-bottom: 0.5rem;"></h3>
+            <div class="problem-prompt" id="explorerProblem"></div>
+
+            <div class="editorial-box box-subtle" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+              <h4 style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Known Information &amp; Target</h4>
+              <div id="explorerGivens" style="font-size: 0.94rem;"></div>
+            </div>
+
+            <div class="explorer-controls">
+              <button type="button" class="btn btn-primary" id="btnToggleSolution" onclick="toggleExplorerSolution()">
+                Reveal Solution
+              </button>
+            </div>
+
+            <div class="solution-panel" id="explorerSolution">
+              <h4 style="font-family: var(--font-sans); color: var(--accent-sage); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem;">
+                Step-by-Step Mathematical Solution
+              </h4>
+              <div id="explorerSolutionContent"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 8: INTERACTIVE CALCULATOR
+      =========================================== -->
+      <section class="section-block" id="calculator" aria-labelledby="calc-heading">
+        <div class="section-header">
+          <span class="section-kicker">Interactive Tool</span>
+          <h2 id="calc-heading">Financial Interest Calculator</h2>
+        </div>
+        <p>
+          Calculate either <strong>Ordinary Simple Interest</strong> or <strong>Deductive Interest (In Advance)</strong> with automatic unit conversions and live effective rate computations using Philippine pesos.
+        </p>
+
+        <div class="calculator-card">
+          <!-- Preset selector buttons -->
+          <div class="calc-presets">
+            <span>Load Quick Example:</span>
+            <button type="button" class="preset-pill" onclick="applyPreset(5000, 4, 2, 'years', 'ordinary')">Maria's ₱5,000 Savings</button>
+            <button type="button" class="preset-pill" onclick="applyPreset(20000, 8, 1, 'years', 'deductive')">Angelo's ₱20,000 Deductive Loan</button>
+            <button type="button" class="preset-pill" onclick="applyPreset(15000, 6, 6, 'months', 'ordinary')">₱15,000 for 6 Months</button>
+          </div>
+
+          <div class="calc-error" id="calcError" role="alert"></div>
+
+          <form id="interestForm" onsubmit="event.preventDefault(); calculateInterest();" style="margin-top: 1rem;">
+            <div class="calc-layout">
+              <!-- Left: Inputs -->
+              <div class="calc-inputs-pane">
+                <div class="form-group">
+                  <label for="calcMethod">Calculation Method</label>
+                  <div class="radio-pill-group" role="radiogroup" aria-label="Calculation Method">
+                    <label class="radio-pill-label active" id="labelMethodOrdinary">
+                      <input type="radio" name="calcMethod" value="ordinary" checked onchange="handleMethodChange('ordinary')">
+                      Ordinary (Add-On)
+                    </label>
+                    <label class="radio-pill-label" id="labelMethodDeductive">
+                      <input type="radio" name="calcMethod" value="deductive" onchange="handleMethodChange('deductive')">
+                      Deductive (In Advance)
+                    </label>
+                  </div>
+                  <span class="field-hint" id="methodHint">Interest is added at maturity date.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="calcPrincipal">Principal Amount (₱)</label>
+                  <div class="input-affix-wrapper">
+                    <span class="input-affix">&#8369;</span>
+                    <input type="number" id="calcPrincipal" class="calc-input has-affix" min="0" step="any" value="5000" placeholder="5000" required aria-describedby="principalHint">
+                  </div>
+                  <span class="field-hint" id="principalHint">Initial sum deposited or face value of loan.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="calcRate">Annual Interest Rate (%)</label>
+                  <input type="number" id="calcRate" class="calc-input" min="0" max="1000" step="any" value="4" placeholder="4" required aria-describedby="rateHint">
+                  <span class="field-hint" id="rateHint">Annual percentage rate (e.g. enter 4 for 4%).</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="calcTime">Duration / Time Period</label>
+                  <div class="input-row">
+                    <input type="number" id="calcTime" class="calc-input" min="0.01" step="any" value="2" placeholder="2" style="flex: 2;" required aria-describedby="timeHint">
+                    <select id="calcTimeUnit" class="calc-select" style="flex: 1.3;" aria-label="Time Unit">
+                      <option value="years" selected>Years</option>
+                      <option value="months">Months</option>
+                    </select>
+                  </div>
+                  <span class="field-hint" id="timeHint">Months are automatically converted to years (\(t = \text{months} / 12\)).</span>
+                </div>
+
+                <div class="calc-btn-row">
+                  <button type="submit" class="btn btn-primary" style="flex: 1;">Calculate</button>
+                  <button type="button" class="btn btn-secondary" onclick="resetCalculator()">Reset</button>
+                </div>
+              </div>
+
+              <!-- Right: Results Display -->
+              <div class="calc-results-pane" id="calcResultsPane" aria-live="polite">
+                <div>
+                  <div class="result-kicker" id="resultMethodTitle">Ordinary Interest Summary</div>
+                  
+                  <div class="result-data-list">
+                    <div class="result-data-row">
+                      <span class="result-label">Stated Principal (P):</span>
+                      <span class="result-value" id="resPrincipal">&#8369;5,000.00</span>
+                    </div>
+                    <div class="result-data-row">
+                      <span class="result-label">Nominal Rate (r):</span>
+                      <span class="result-value" id="resRate">4.00%</span>
+                    </div>
+                    <div class="result-data-row">
+                      <span class="result-label">Effective Duration (t):</span>
+                      <span class="result-value" id="resTime">2.00 years</span>
+                    </div>
+                    <div class="result-data-row highlight-row">
+                      <span class="result-label" id="resInterestLabel">Interest Earned (I):</span>
+                      <span class="result-value large" id="resInterest">&#8369;400.00</span>
+                    </div>
+                    <div class="result-data-row highlight-row">
+                      <span class="result-label" id="resAmountLabel">Total Maturity Value (A):</span>
+                      <span class="result-value large" id="resAmount">&#8369;5,400.00</span>
+                    </div>
+                    <div class="result-data-row" id="rowEir" style="display: none;">
+                      <span class="result-label">Effective Rate (EIR):</span>
+                      <span class="result-value" id="resEir" style="color: #705206;">--</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="calc-explanation" id="resExplanation">
+                  Formula used: <code>I = P &times; r &times; t = &#8369;5,000 &times; 0.04 &times; 2 = &#8369;400.00</code>. Total balance is <code>A = P + I = &#8369;5,400.00</code>.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 9: PRACTICE ACTIVITIES
+      =========================================== -->
+      <section class="section-block" id="practice" aria-labelledby="practice-heading">
+        <div class="section-header">
+          <span class="section-kicker">Interactive Skill Check</span>
+          <h2 id="practice-heading">Guided Practice Activities</h2>
+        </div>
+        <p>
+          Test your diagnostic readiness with five targeted questions before taking the final graded evaluation. Each question features instant verification and remedial explanations.
+        </p>
+
+        <div class="practice-card">
+          <div class="practice-meta-header">
+            <span class="practice-indicator" id="practiceProgressText">Question 1 of 5</span>
+            <span id="practiceStatusBadge">Select your answer below</span>
+          </div>
+
+          <div class="question-prompt" id="practicePromptText">
+            Loading practice question...
+          </div>
+
+          <div class="options-group" id="practiceOptionsContainer" role="radiogroup" aria-label="Practice Question Options">
+            <!-- Options dynamically rendered via JS -->
+          </div>
+
+          <div class="practice-feedback" id="practiceFeedbackBox" role="alert"></div>
+
+          <div class="practice-nav-bar">
+            <button type="button" class="btn btn-secondary" id="btnPrevPractice" onclick="prevPracticeQuestion()" disabled>
+              Previous
+            </button>
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" class="btn btn-secondary" id="btnRetryPractice" onclick="retryPracticeQuestion()" style="display: none;">
+                Retry
+              </button>
+              <button type="button" class="btn btn-primary" id="btnSubmitPractice" onclick="submitPracticeAnswer()">
+                Check Answer
+              </button>
+              <button type="button" class="btn btn-primary" id="btnNextPractice" onclick="nextPracticeQuestion()" style="display: none;">
+                Next Question
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 10: INTERACTIVE FINAL QUIZ
+      =========================================== -->
+      <section class="section-block" id="quiz" aria-labelledby="quiz-heading">
+        <div class="section-header">
+          <span class="section-kicker">Evaluation &amp; Mastery</span>
+          <h2 id="quiz-heading">Comprehensive Final Examination</h2>
+        </div>
+        <p>
+          Assess your complete understanding across 10 progressive questions covering definitions, variable conversions, deductive loan discount mechanics, and real-world Philippine consumer calculations.
+        </p>
+
+        <div class="quiz-card">
+          <!-- Quiz Active View -->
+          <div id="quizActiveView">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+              <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);" id="quizQuestionTracker">Question 1 of 10</span>
+              <span class="quiz-score-badge">Current Score: <strong id="quizLiveScore">0</strong></span>
+            </div>
+
+            <div class="quiz-progress-bar-container" aria-hidden="true">
+              <div class="quiz-progress-fill" id="quizProgressBar"></div>
+            </div>
+
+            <div class="question-prompt" id="quizPrompt">
+              Quiz question loading...
+            </div>
+
+            <div class="options-group" id="quizOptionsContainer" role="radiogroup" aria-label="Quiz Question Options">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div class="practice-feedback" id="quizFeedbackBox" role="alert"></div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+              <button type="button" class="btn btn-primary" id="btnSubmitQuiz" onclick="submitQuizAnswer()">
+                Submit Answer
+              </button>
+              <button type="button" class="btn btn-primary" id="btnNextQuiz" onclick="nextQuizQuestion()" style="display: none;">
+                Continue
+              </button>
+            </div>
+          </div>
+
+          <!-- Quiz Results Screen -->
+          <div class="quiz-results-screen" id="quizResultsScreen">
+            <span class="section-kicker">Examination Complete</span>
+            <h3 style="font-size: 1.85rem; margin-bottom: 0.25rem;">Performance Assessment</h3>
+            <p id="quizPerformanceDesc" class="lead" style="max-width: 600px; margin: 0 auto 1.5rem;"></p>
+
+            <div class="score-circle">
+              <span class="score-circle-num" id="quizFinalScoreNum">0/10</span>
+              <span class="score-circle-label" id="quizFinalPercent">0%</span>
+            </div>
+
+            <div class="quiz-summary-table-wrapper">
+              <table class="editorial-table" id="quizReviewTable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Topic &amp; Question</th>
+                    <th scope="col">Your Response</th>
+                    <th scope="col">Correct Answer</th>
+                    <th scope="col">Outcome</th>
+                  </tr>
+                </thead>
+                <tbody id="quizReviewTableBody">
+                  <!-- Generated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 2rem;">
+              <button type="button" class="btn btn-primary" onclick="restartQuiz()">
+                Restart Examination
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 11: COMMON MISTAKES
+      =========================================== -->
+      <section class="section-block" id="mistakes" aria-labelledby="mistakes-heading">
+        <div class="section-header">
+          <span class="section-kicker">Error Prevention</span>
+          <h2 id="mistakes-heading">Frequent Student Misconceptions</h2>
+        </div>
+        <p>
+          Carefully analyze these five recurring traps observed in college business mathematics exams.
+        </p>
+
+        <div class="mistakes-grid">
+          <div class="mistake-card">
+            <span class="mistake-tag">Trap 1: Rate Input</span>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem;">Using Percent Instead of Decimal</h4>
+            <p class="mistake-desc">Plugging \(r = 5\) instead of \(r = 0.05\) inflates the computed interest by a factor of 100.</p>
+            <div class="mistake-correction">
+              <strong>Correction:</strong> Always divide the percentage by 100: \(r = 5\% = 5 / 100 = 0.05\).
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <span class="mistake-tag">Trap 2: Time Unit Mismatch</span>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem;">Plugging Months Directly into t</h4>
+            <p class="mistake-desc">Using \(t = 9\) for a 9-month note mistakenly calculates interest for 9 full years!</p>
+            <div class="mistake-correction">
+              <strong>Correction:</strong> Divide months by 12: \(t = 9 / 12 = 0.75\text{ years}\).
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <span class="mistake-tag">Trap 3: Terminology Confusion</span>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem;">Confusing Interest with Total Balance</h4>
+            <p class="mistake-desc">Assuming the answer to "How much will Maria have?" is the interest (\(I = ₱400\)) rather than the total balance (\(A = ₱5,400\)).</p>
+            <div class="mistake-correction">
+              <strong>Correction:</strong> Check whether the prompt asks for <em>interest earned</em> (\(I\)) or <em>maturity value</em> (\(A = P + I\)).
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <span class="mistake-tag">Trap 4: Deductive Cash Flow</span>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem;">Assuming Face Value is Disbursed</h4>
+            <p class="mistake-desc">Believing that on a ₱50,000 deductive loan, the borrower gets ₱50,000 cash on day one.</p>
+            <div class="mistake-correction">
+              <strong>Correction:</strong> Interest is taken upfront; the borrower receives only the <em>net proceeds</em> (\(P - I\)).
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <span class="mistake-tag">Trap 5: Nominal Rate Illusion</span>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem;">Treating Contract Rate as Effective Cost</h4>
+            <p class="mistake-desc">Assuming an 8% deductive loan costs the same as an 8% ordinary simple interest loan.</p>
+            <div class="mistake-correction">
+              <strong>Correction:</strong> Upfront deduction shrinks available principal, making the true effective borrowing rate (\(r_{\text{eff}}\)) higher.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 12: EVERYDAY APPLICATIONS
+      =========================================== -->
+      <section class="section-block" id="applications" aria-labelledby="apps-heading">
+        <div class="section-header">
+          <span class="section-kicker">Philippine Context</span>
+          <h2 id="apps-heading">Real-World Financial Applications</h2>
+        </div>
+        <p>
+          Simple interest and deductive discounting are applied every day across Philippine banking, consumer credit, and small business operations.
+        </p>
+
+        <div class="apps-grid">
+          <div class="app-card">
+            <span class="app-context-badge">Commercial Banking</span>
+            <h3>Philippine Time Deposits</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary);">
+              Major banks (such as BDO, BPI, and LandBank) offer 30-day, 90-day, or 1-year special time deposit accounts where capital is locked in at an agreed simple interest rate, paid upon maturity.
+            </p>
+          </div>
+
+          <div class="app-card">
+            <span class="app-context-badge">Consumer Lending</span>
+            <h3>Salary Advances &amp; Deductive Loans</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary);">
+              When employees take a ₱20,000 emergency loan from credit unions or private lenders, the interest and doc stamps are often deducted upfront. The borrower receives ₱18,000 but repays the full ₱20,000 through payroll deductions.
+            </p>
+          </div>
+
+          <div class="app-card">
+            <span class="app-context-badge">SME &amp; Microfinance</span>
+            <h3>Sari-Sari Store Financing</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary);">
+              Micro-entrepreneurs borrowing inventory capital must calculate upfront deductions to verify whether the net cash delivered will actually cover their supplier purchases.
+            </p>
+          </div>
+
+          <div class="app-card">
+            <span class="app-context-badge">Legal Protection</span>
+            <h3>Truth in Lending Act (RA 3765)</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary);">
+              Mandates that Philippine lenders provide full disclosure statements showing the gross principal, advance deductions, net proceeds, and true Effective Interest Rate (EIR) to prevent hidden fees.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 13: SUMMARY & KEY TAKEAWAYS
+      =========================================== -->
+      <section class="section-block" id="summary" aria-labelledby="summary-heading">
+        <div class="summary-box">
+          <div class="section-header" style="margin-bottom: 1rem;">
+            <span class="section-kicker">Pre-Exam Review</span>
+            <h2 id="summary-heading" style="border-bottom: none; padding-bottom: 0;">Summary &amp; Key Takeaways</h2>
+          </div>
+
+          <ul style="font-size: 0.98rem; color: var(--text-secondary);">
+            <li><strong>Core Linear Formula:</strong> Simple Interest is governed by \(I = Prt\), where \(r\) is in decimals and \(t\) is in years.</li>
+            <li><strong>Ordinary Total Balance:</strong> \(A = P + I = P(1 + rt)\) represents the final accumulated sum when interest is paid at the end.</li>
+            <li><strong>Deductive Interest (In Advance):</strong> The lender calculates \(I = Prt\) and deducts it upfront. The borrower receives \(\text{Proceeds} = P - I\) on day one and repays \(P\) at maturity.</li>
+            <li><strong>True Effective Borrowing Cost:</strong> Because deductive loans provide less than face value in cash, the true Effective Interest Rate is \(r_{\text{eff}} = \frac{I}{\text{Proceeds} \times t}\).</li>
+            <li><strong>Time Precision:</strong> Always convert months to years (\(t = \text{months} / 12\)) before substituting into the formulas.</li>
+          </ul>
+
+          <div class="summary-actions">
+            <a href="#practice" class="btn btn-secondary">Review Practice Questions</a>
+            <a href="#calculator" class="btn btn-secondary">Open Calculator</a>
+            <a href="#quiz" class="btn btn-primary">Take the Final Examination</a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ==========================================
+       SECTION 14: FOOTER
+  =========================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-quote">
+        &ldquo;Understand the concept. Practice the method. Apply what you learn.&rdquo;
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <strong>Mathematics in the Modern World (MMW)</strong> &bull; General Education Resource
+        </div>
+        <div>
+          Calculations verified in Philippine Pesos (&#8369;) &bull; Free Self-Contained Educational Module
+        </div>
+        <div>
+          <a href="#intro" style="color: var(--accent-sage); font-weight: 600;">Back to top &uarr;</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       VANILLA JAVASCRIPT LOGIC
+       1. Navigation & Scroll Progress Tracking
+       2. Interactive Example Explorer
+       3. Deductive & Simple Interest Calculator
+       4. Guided Practice Activities
+       5. Interactive Final Quiz Engine
+  =========================================== -->
+  <script>
+    /* ==================================================
+       1. NAVIGATION & SCROLL PROGRESS TRACKING
+    ================================================== */
+    const progressBar = document.getElementById('readingProgressBar');
+    const btnMenuToggle = document.getElementById('btnMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const desktopNavLinks = document.querySelectorAll('.nav-desktop .nav-link');
+
+    // Update progress bar on scroll
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+      highlightActiveNav();
+    }, { passive: true });
+
+    // Mobile menu toggle
+    if (btnMenuToggle && mobileMenu) {
+      btnMenuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        btnMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          btnMenuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Active navigation highlight based on scroll position
+    const navSections = document.querySelectorAll('section[id]');
+    function highlightActiveNav() {
+      const scrollY = window.pageYOffset;
+      navSections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 120;
+        const sectionId = current.getAttribute('id');
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          desktopNavLinks.forEach(link => {
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }
+
+    /* ==================================================
+       2. INTERACTIVE EXAMPLE EXPLORER DATA & LOGIC
+    ================================================== */
+    const explorerData = [
+      {
+        title: "Case A: Sari-Sari Store Working Capital Loan",
+        problem: "Nanay Corazon borrows ₱30,000 for 6 months from a local microfinance cooperative charging 6% annual deductive interest (interest deducted in advance). How much money does Nanay Corazon actually take home to buy store inventory, and what must she repay after 6 months?",
+        givens: "<strong>Principal (P):</strong> &#8369;30,000<br><strong>Nominal Rate (r):</strong> 6% = 0.06<br><strong>Time (t):</strong> 6 months = 6 &divide; 12 = 0.5 years<br><strong>Method:</strong> Deductive Interest (In Advance)",
+        solution: `
+          <p><strong>Step 1: Compute Upfront Interest Deduction (I)</strong><br>
+          <code>I = P &times; r &times; t = &#8369;30,000 &times; 0.06 &times; 0.5 = &#8369;900.00</code></p>
+          <p><strong>Step 2: Calculate Cash Proceeds Received on Day 1</strong><br>
+          <code>Proceeds = P - I = &#8369;30,000 - &#8369;900 = &#8369;29,100.00</code></p>
+          <p><strong>Step 3: Repayment at Maturity</strong><br>
+          Because the ₱900 fee was already collected upfront, Nanay Corazon repays the face value of <strong>&#8369;30,000.00</strong> at the end of 6 months.</p>
+          <p><strong>Step 4: True Annual Effective Interest Rate (EIR)</strong><br>
+          <code>r<sub>eff</sub> = I &divide; (Proceeds &times; t) = 900 &divide; (29,100 &times; 0.5) &asymp; 6.19%</code></p>
+          <p><strong>Takeaway:</strong> Upfront deduction reduced her inventory purchasing capital by ₱900 and raised her true annual cost to 6.19%.</p>
+        `
+      },
+      {
+        title: "Case B: Determining the Missing Annual Interest Rate",
+        problem: "Beatriz invested ₱15,000 in a municipal savings bond. At the end of 1.5 years, she received ₱1,350 in simple interest. What was the annual simple interest rate offered by the bond?",
+        givens: "<strong>Principal (P):</strong> &#8369;15,000<br><strong>Interest Earned (I):</strong> &#8369;1,350<br><strong>Time (t):</strong> 1.5 years<br><strong>Target:</strong> Annual Rate (r)",
+        solution: `
+          <p><strong>Step 1: Select the Rearranged Formula for Rate</strong><br>
+          From <code>I = Prt</code>, isolate <code>r</code>: <code>r = I &divide; (P &times; t)</code></p>
+          <p><strong>Step 2: Substitute Known Values</strong><br>
+          <code>r = 1,350 &divide; (15,000 &times; 1.5) = 1,350 &divide; 22,500 = 0.06</code></p>
+          <p><strong>Step 3: Convert Decimal to Percentage</strong><br>
+          <code>0.06 &times; 100 = 6.00%</code></p>
+          <p><strong>Conclusion:</strong> The bond paid an annual simple interest rate of exactly <strong>6% per annum</strong>.</p>
+        `
+      },
+      {
+        title: "Case C: College Tuition Installment Promissory Note",
+        problem: "Mark signs a 4-month promissory note for ₱18,000 to cover his university midterms tuition. The university financing office applies a simple interest rate of 4.5% per annum. What is the total repayment amount Mark must pay at the end of the 4 months?",
+        givens: "<strong>Principal (P):</strong> &#8369;18,000<br><strong>Annual Rate (r):</strong> 4.5% = 0.045<br><strong>Time (t):</strong> 4 months = 4 &divide; 12 = 1/3 &asymp; 0.3333 years<br><strong>Target:</strong> Total Maturity Amount (A)",
+        solution: `
+          <p><strong>Step 1: Convert Time to Years</strong><br>
+          <code>t = 4 / 12 = 1/3 year</code></p>
+          <p><strong>Step 2: Compute Simple Interest (I)</strong><br>
+          <code>I = P &times; r &times; t = &#8369;18,000 &times; 0.045 &times; (1/3) = &#8369;270.00</code></p>
+          <p><strong>Step 3: Compute Total Repayment (A)</strong><br>
+          <code>A = P + I = &#8369;18,000 + &#8369;270 = &#8369;18,270.00</code></p>
+          <p><strong>Conclusion:</strong> Mark will repay exactly <strong>&#8369;18,270.00</strong> at the end of 4 months.</p>
+        `
+      },
+      {
+        title: "Case D: Finding the Initial Principal from Total Amount",
+        problem: "Carlos wants to accumulate exactly ₱69,000 in a fixed-yield educational fund after 3 years. If the fund guarantees 5% simple interest per year, how much principal must Carlos deposit today?",
+        givens: "<strong>Total Target (A):</strong> &#8369;69,000<br><strong>Annual Rate (r):</strong> 5% = 0.05<br><strong>Time (t):</strong> 3 years<br><strong>Target:</strong> Required Initial Deposit (P)",
+        solution: `
+          <p><strong>Step 1: Use Total Amount Formula</strong><br>
+          <code>A = P(1 + rt)</code></p>
+          <p><strong>Step 2: Isolate Principal (P)</strong><br>
+          <code>P = A &divide; (1 + rt)</code></p>
+          <p><strong>Step 3: Evaluate Denominator Multiplier</strong><br>
+          <code>1 + (0.05 &times; 3) = 1 + 0.15 = 1.15</code></p>
+          <p><strong>Step 4: Calculate P</strong><br>
+          <code>P = &#8369;69,000 &divide; 1.15 = &#8369;60,000.00</code></p>
+          <p><strong>Check:</strong> Interest on ₱60,000 at 5% for 3 years is <code>60,000 &times; 0.05 &times; 3 = &#8369;9,000</code>. Total balance is <code>60,000 + 9,000 = &#8369;69,000</code>. Carlos must deposit <strong>&#8369;60,000.00</strong>.</p>
+        `
+      }
+    ];
+
+    let currentExplorerIdx = 0;
+    let isExplorerSolutionShown = false;
+
+    function loadExplorerExample(idx) {
+      currentExplorerIdx = idx;
+      isExplorerSolutionShown = false;
+
+      // Update tab active classes
+      for (let i = 0; i < 4; i++) {
+        const tab = document.getElementById('tab' + i);
+        if (tab) {
+          if (i === idx) {
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+          } else {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-selected', 'false');
+          }
+        }
+      }
+
+      const data = explorerData[idx];
+      document.getElementById('explorerTitle').textContent = data.title;
+      document.getElementById('explorerProblem').innerHTML = `<strong>Problem Statement:</strong> ${data.problem}`;
+      document.getElementById('explorerGivens').innerHTML = data.givens;
+      document.getElementById('explorerSolutionContent').innerHTML = data.solution;
+
+      const solutionPanel = document.getElementById('explorerSolution');
+      solutionPanel.classList.remove('revealed');
+      document.getElementById('btnToggleSolution').textContent = 'Reveal Solution';
+    }
+
+    function toggleExplorerSolution() {
+      const solutionPanel = document.getElementById('explorerSolution');
+      const btn = document.getElementById('btnToggleSolution');
+      isExplorerSolutionShown = !isExplorerSolutionShown;
+      if (isExplorerSolutionShown) {
+        solutionPanel.classList.add('revealed');
+        btn.textContent = 'Hide Solution';
+      } else {
+        solutionPanel.classList.remove('revealed');
+        btn.textContent = 'Reveal Solution';
+      }
+    }
+
+    // Initialize explorer with first example
+    loadExplorerExample(0);
+
+    /* ==================================================
+       3. CALCULATOR ENGINE
+    ================================================== */
+    let currentCalcMethod = 'ordinary';
+
+    function handleMethodChange(method) {
+      currentCalcMethod = method;
+      const labelOrdinary = document.getElementById('labelMethodOrdinary');
+      const labelDeductive = document.getElementById('labelMethodDeductive');
+      const methodHint = document.getElementById('methodHint');
+      const rowEir = document.getElementById('rowEir');
+      const resInterestLabel = document.getElementById('resInterestLabel');
+      const resAmountLabel = document.getElementById('resAmountLabel');
+      const resultMethodTitle = document.getElementById('resultMethodTitle');
+
+      if (method === 'ordinary') {
+        labelOrdinary.classList.add('active');
+        labelDeductive.classList.remove('active');
+        methodHint.textContent = 'Ordinary Simple Interest: Interest is added at maturity date (A = P + I).';
+        resultMethodTitle.textContent = 'Ordinary Interest Summary';
+        resInterestLabel.textContent = 'Interest Earned (I):';
+        resAmountLabel.textContent = 'Total Maturity Value (A):';
+        rowEir.style.display = 'none';
+      } else {
+        labelDeductive.classList.add('active');
+        labelOrdinary.classList.remove('active');
+        methodHint.textContent = 'Deductive Interest: Interest is deducted upfront. You receive Net Proceeds (P - I).';
+        resultMethodTitle.textContent = 'Deductive Loan Summary (In Advance)';
+        resInterestLabel.textContent = 'Upfront Deduction (I):';
+        resAmountLabel.textContent = 'Net Cash Proceeds:';
+        rowEir.style.display = 'flex';
+      }
+      calculateInterest();
+    }
+
+    function applyPreset(principal, rate, time, unit, method) {
+      document.getElementById('calcPrincipal').value = principal;
+      document.getElementById('calcRate').value = rate;
+      document.getElementById('calcTime').value = time;
+      document.getElementById('calcTimeUnit').value = unit;
+
+      const radio = document.querySelector(`input[name="calcMethod"][value="${method}"]`);
+      if (radio) radio.checked = true;
+      handleMethodChange(method);
+    }
+
+    function formatPeso(amount) {
+      return '₱' + Number(amount).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function calculateInterest() {
+      const errorBox = document.getElementById('calcError');
+      errorBox.style.display = 'none';
+      errorBox.textContent = '';
+
+      const principal = parseFloat(document.getElementById('calcPrincipal').value);
+      const ratePercent = parseFloat(document.getElementById('calcRate').value);
+      const timeInput = parseFloat(document.getElementById('calcTime').value);
+      const timeUnit = document.getElementById('calcTimeUnit').value;
+
+      // Validation
+      if (isNaN(principal) || principal < 0) {
+        showCalcError('Please enter a valid, non-negative principal amount.');
+        return;
+      }
+      if (isNaN(ratePercent) || ratePercent < 0) {
+        showCalcError('Please enter a valid, non-negative annual interest rate.');
+        return;
+      }
+      if (isNaN(timeInput) || timeInput <= 0) {
+        showCalcError('Please enter a duration strictly greater than zero.');
+        return;
+      }
+
+      // Convert time to years
+      const tInYears = timeUnit === 'months' ? timeInput / 12 : timeInput;
+      const rDecimal = ratePercent / 100;
+
+      // Interest calculation: I = P * r * t
+      const interest = principal * rDecimal * tInYears;
+
+      document.getElementById('resPrincipal').textContent = formatPeso(principal);
+      document.getElementById('resRate').textContent = ratePercent.toFixed(2) + '% (' + rDecimal.toFixed(4) + ')';
+      document.getElementById('resTime').textContent = tInYears.toFixed(2) + ' years' + (timeUnit === 'months' ? ` (${timeInput} mos)` : '');
+      document.getElementById('resInterest').textContent = formatPeso(interest);
+
+      const explanationEl = document.getElementById('resExplanation');
+
+      if (currentCalcMethod === 'ordinary') {
+        const totalAmount = principal + interest;
+        document.getElementById('resAmount').textContent = formatPeso(totalAmount);
+        explanationEl.innerHTML = `
+          <strong>Ordinary Method:</strong> <code>I = P &times; r &times; t = ${formatPeso(principal)} &times; ${rDecimal.toFixed(4)} &times; ${tInYears.toFixed(2)} = ${formatPeso(interest)}</code>.<br>
+          At maturity, the total accumulated sum is <code>A = P + I = ${formatPeso(principal)} + ${formatPeso(interest)} = ${formatPeso(totalAmount)}</code>.
+        `;
+      } else {
+        // Deductive Interest
+        const proceeds = principal - interest;
+        if (proceeds < 0) {
+          showCalcError('Notice: Upfront interest exceeds principal! Increase duration or reduce interest rate.');
+          return;
+        }
+        document.getElementById('resAmount').textContent = formatPeso(proceeds);
+
+        // Effective interest rate: EIR = I / (Proceeds * t)
+        const eir = proceeds > 0 ? (interest / (proceeds * tInYears)) * 100 : 0;
+        document.getElementById('resEir').textContent = eir.toFixed(2) + '% p.a.';
+
+        explanationEl.innerHTML = `
+          <strong>Deductive Method:</strong> Upfront deduction is <code>I = P &times; r &times; t = ${formatPeso(interest)}</code>.<br>
+          Net proceeds delivered to borrower on day 1: <code>Proceeds = P - I = ${formatPeso(principal)} - ${formatPeso(interest)} = ${formatPeso(proceeds)}</code>.<br>
+          Repayment due at maturity: <strong>${formatPeso(principal)}</strong>.<br>
+          True Effective Annual Interest Rate (EIR): <code>${eir.toFixed(2)}%</code> (nominal was ${ratePercent.toFixed(2)}%).
+        `;
+      }
+    }
+
+    function showCalcError(msg) {
+      const errorBox = document.getElementById('calcError');
+      errorBox.textContent = msg;
+      errorBox.style.display = 'block';
+    }
+
+    function resetCalculator() {
+      document.getElementById('calcPrincipal').value = '5000';
+      document.getElementById('calcRate').value = '4';
+      document.getElementById('calcTime').value = '2';
+      document.getElementById('calcTimeUnit').value = 'years';
+      const radio = document.querySelector('input[name="calcMethod"][value="ordinary"]');
+      if (radio) radio.checked = true;
+      handleMethodChange('ordinary');
+    }
+
+    // Attach live input event listeners to auto-calculate
+    ['calcPrincipal', 'calcRate', 'calcTime'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', calculateInterest);
+    });
+    const timeUnitEl = document.getElementById('calcTimeUnit');
+    if (timeUnitEl) timeUnitEl.addEventListener('change', calculateInterest);
+
+    // Initial calculation run
+    calculateInterest();
+
+    /* ==================================================
+       4. GUIDED PRACTICE ACTIVITIES DATA & LOGIC
+    ================================================== */
+    const practiceQuestions = [
+      {
+        prompt: "Calculate the simple interest earned on a deposit of ₱12,000 at 5% annual interest for 3 years.",
+        options: [
+          "₱1,500.00",
+          "₱1,800.00",
+          "₱13,800.00",
+          "₱600.00"
+        ],
+        correct: 1,
+        explanation: "Correct! Using I = Prt: I = ₱12,000 × 0.05 × 3 = ₱1,800.00. (Note: ₱13,800 is the total maturity value A, not just the interest earned)."
+      },
+      {
+        prompt: "Which mathematical formula correctly expresses the Net Proceeds received by a borrower under deductive interest?",
+        options: [
+          "Proceeds = P(1 + rt)",
+          "Proceeds = P - I = P(1 - rt)",
+          "Proceeds = I / (P × t)",
+          "Proceeds = P / (1 + rt)"
+        ],
+        correct: 1,
+        explanation: "Correct! In deductive loans, interest is taken upfront, so Proceeds = P - I. Factoring out P yields P(1 - rt)."
+      },
+      {
+        prompt: "A borrower takes a loan for 18 months. What exact numerical value of time (t) in years must be substituted into I = Prt?",
+        options: [
+          "t = 18",
+          "t = 0.18",
+          "t = 1.5",
+          "t = 1.8"
+        ],
+        correct: 2,
+        explanation: "Correct! Since time must always be expressed in years, divide the number of months by 12: t = 18 / 12 = 1.5 years."
+      },
+      {
+        prompt: "A cooperative offers a ₱50,000 emergency loan for 1 year at 6% deductive interest. How much actual cash is handed to the borrower on day one?",
+        options: [
+          "₱50,000.00",
+          "₱53,000.00",
+          "₱47,000.00",
+          "₱3,000.00"
+        ],
+        correct: 2,
+        explanation: "Correct! Upfront interest is I = ₱50,000 × 0.06 × 1 = ₱3,000. The net cash proceeds received are ₱50,000 - ₱3,000 = ₱47,000.00."
+      },
+      {
+        prompt: "Spot the error: A student calculated interest on ₱8,000 at 4.5% for 2 years as: I = 8,000 × 4.5 × 2 = ₱72,000. What did the student do wrong?",
+        options: [
+          "They should have divided 8,000 by 2.",
+          "They forgot to convert the percentage 4.5% into decimal 0.045.",
+          "They should have used the formula A = P + I.",
+          "The calculation is actually correct."
+        ],
+        correct: 1,
+        explanation: "Correct! The annual rate must be converted to a decimal before multiplying: 4.5% = 0.045. The true interest is ₱8,000 × 0.045 × 2 = ₱720.00."
+      }
+    ];
+
+    let currentPracticeIdx = 0;
+    let selectedPracticeOption = null;
+    let practiceAnswerSubmitted = false;
+
+    function renderPracticeQuestion() {
+      const q = practiceQuestions[currentPracticeIdx];
+      document.getElementById('practiceProgressText').textContent = `Question ${currentPracticeIdx + 1} of ${practiceQuestions.length}`;
+      document.getElementById('practicePromptText').textContent = q.prompt;
+
+      const container = document.getElementById('practiceOptionsContainer');
+      container.innerHTML = '';
+
+      q.options.forEach((optText, idx) => {
+        const label = document.createElement('label');
+        label.className = 'practice-option-label';
+        label.id = `practiceOptLabel_${idx}`;
+        label.innerHTML = `
+          <input type="radio" name="practiceOption" value="${idx}" onchange="selectPracticeOption(${idx})">
+          <span>${optText}</span>
+        `;
+        container.appendChild(label);
+      });
+
+      // Reset feedback and buttons
+      const fbBox = document.getElementById('practiceFeedbackBox');
+      fbBox.className = 'practice-feedback';
+      fbBox.style.display = 'none';
+      fbBox.textContent = '';
+
+      selectedPracticeOption = null;
+      practiceAnswerSubmitted = false;
+
+      document.getElementById('btnSubmitPractice').style.display = 'inline-flex';
+      document.getElementById('btnRetryPractice').style.display = 'none';
+      document.getElementById('btnNextPractice').style.display = 'none';
+
+      document.getElementById('btnPrevPractice').disabled = currentPracticeIdx === 0;
+      document.getElementById('practiceStatusBadge').textContent = 'Select your answer below';
+    }
+
+    function selectPracticeOption(idx) {
+      if (practiceAnswerSubmitted) return;
+      selectedPracticeOption = idx;
+      const allLabels = document.querySelectorAll('.practice-option-label');
+      allLabels.forEach((lbl, i) => {
+        lbl.classList.toggle('selected', i === idx);
+      });
+    }
+
+    function submitPracticeAnswer() {
+      if (selectedPracticeOption === null) {
+        alert('Please choose an answer option before checking.');
+        return;
+      }
+      practiceAnswerSubmitted = true;
+      const q = practiceQuestions[currentPracticeIdx];
+      const isCorrect = selectedPracticeOption === q.correct;
+
+      const fbBox = document.getElementById('practiceFeedbackBox');
+      fbBox.className = 'practice-feedback show ' + (isCorrect ? 'success' : 'error');
+      fbBox.innerHTML = `<strong>${isCorrect ? '&#10003; Correct!' : '&#10007; Not quite.'}</strong> ${q.explanation}`;
+
+      const selectedLabel = document.getElementById(`practiceOptLabel_${selectedPracticeOption}`);
+      const correctLabel = document.getElementById(`practiceOptLabel_${q.correct}`);
+
+      if (isCorrect) {
+        selectedLabel.classList.add('correct');
+        document.getElementById('practiceStatusBadge').textContent = 'Solved correctly!';
+      } else {
+        selectedLabel.classList.add('incorrect');
+        correctLabel.classList.add('correct');
+        document.getElementById('practiceStatusBadge').textContent = 'Incorrect - review the correction';
+      }
+
+      document.getElementById('btnSubmitPractice').style.display = 'none';
+
+      if (!isCorrect) {
+        document.getElementById('btnRetryPractice').style.display = 'inline-flex';
+      }
+      if (currentPracticeIdx < practiceQuestions.length - 1) {
+        document.getElementById('btnNextPractice').style.display = 'inline-flex';
+      }
+    }
+
+    function retryPracticeQuestion() {
+      renderPracticeQuestion();
+    }
+
+    function nextPracticeQuestion() {
+      if (currentPracticeIdx < practiceQuestions.length - 1) {
+        currentPracticeIdx++;
+        renderPracticeQuestion();
+      }
+    }
+
+    function prevPracticeQuestion() {
+      if (currentPracticeIdx > 0) {
+        currentPracticeIdx--;
+        renderPracticeQuestion();
+      }
+    }
+
+    // Initialize practice
+    renderPracticeQuestion();
+
+    /* ==================================================
+       5. COMPREHENSIVE FINAL QUIZ ENGINE (10 QUESTIONS)
+    ================================================== */
+    const quizQuestions = [
+      {
+        topic: "Basic Interest Calculation",
+        prompt: "1. Maria deposits ₱5,000 into a savings account earning 4% simple interest per year for 2 years. What is her final total balance?",
+        options: [
+          "₱400.00",
+          "₱5,200.00",
+          "₱5,400.00",
+          "₱5,800.00"
+        ],
+        correct: 2,
+        explanation: "Interest is I = ₱5,000 × 0.04 × 2 = ₱400. The total balance is A = P + I = ₱5,000 + ₱400 = ₱5,400.00."
+      },
+      {
+        topic: "Percentage to Decimal Conversion",
+        prompt: "2. When substituting an annual interest rate of 3.25% into the simple interest formula, what decimal value must be used?",
+        options: [
+          "3.25",
+          "0.325",
+          "0.0325",
+          "0.00325"
+        ],
+        correct: 2,
+        explanation: "Always divide by 100: 3.25% = 3.25 / 100 = 0.0325."
+      },
+      {
+        topic: "Deductive Loan Proceeds",
+        prompt: "3. A borrower takes out a ₱20,000 loan for 1 year with an 8% deductive interest rate (collected in advance). What are the net proceeds received?",
+        options: [
+          "₱20,000.00",
+          "₱18,400.00",
+          "₱21,600.00",
+          "₱1,600.00"
+        ],
+        correct: 1,
+        explanation: "Upfront interest is I = ₱20,000 × 0.08 × 1 = ₱1,600. Net proceeds received are ₱20,000 - ₱1,600 = ₱18,400.00."
+      },
+      {
+        topic: "Effective Interest Rate (EIR)",
+        prompt: "4. Why is the Effective Interest Rate (EIR) on a deductive loan higher than the nominal stated interest rate?",
+        options: [
+          "Because banks add hidden compound interest.",
+          "Because the borrower pays interest computed on the full principal while having access to only the net proceeds.",
+          "Because Philippine laws require a penalty surcharge.",
+          "It is not higher; they are mathematically identical."
+        ],
+        correct: 1,
+        explanation: "Because interest was deducted upfront, you borrow less money (net proceeds) while paying interest on the full face value, raising your true cost per peso utilized."
+      },
+      {
+        topic: "Time Unit Conversion",
+        prompt: "5. If a promissory note has a term of 9 months, what value of t (in years) must be substituted into I = Prt?",
+        options: [
+          "t = 9",
+          "t = 0.9",
+          "t = 0.75",
+          "t = 0.5"
+        ],
+        correct: 2,
+        explanation: "Convert months to years: t = 9 / 12 = 3/4 = 0.75 years."
+      },
+      {
+        topic: "Solving for Missing Rate",
+        prompt: "6. An investor earns ₱1,500 simple interest on an initial deposit of ₱25,000 after 2 years. What was the annual interest rate?",
+        options: [
+          "3.00%",
+          "6.00%",
+          "2.50%",
+          "4.25%"
+        ],
+        correct: 0,
+        explanation: "Rearranging I = Prt gives r = I / (P × t) = 1,500 / (25,000 × 2) = 1,500 / 50,000 = 0.03 = 3.00%."
+      },
+      {
+        topic: "Solving for Required Principal",
+        prompt: "7. How much principal must be invested at 5% simple interest per year to accumulate to exactly ₱69,000 after 3 years?",
+        options: [
+          "₱55,000.00",
+          "₱60,000.00",
+          "₱65,714.29",
+          "₱58,650.00"
+        ],
+        correct: 1,
+        explanation: "Using P = A / (1 + rt) = 69,000 / (1 + 0.05 × 3) = 69,000 / 1.15 = ₱60,000.00."
+      },
+      {
+        topic: "Deductive Loan Repayment",
+        prompt: "8. In the ₱20,000 deductive loan at 8% for 1 year (from Question 3), how much must the borrower repay to the lender at maturity?",
+        options: [
+          "₱18,400.00",
+          "₱20,000.00",
+          "₱21,600.00",
+          "₱1,600.00"
+        ],
+        correct: 1,
+        explanation: "In a deductive loan, interest was already settled upfront. Therefore, at maturity the borrower repays only the original face value of ₱20,000.00."
+      },
+      {
+        topic: "Philippine Consumer Law",
+        prompt: "9. Which Philippine statute mandates that creditors provide a Disclosure Statement explicitly revealing net proceeds and effective interest rates before loan execution?",
+        options: [
+          "Republic Act No. 3765 (Truth in Lending Act)",
+          "The Local Government Code",
+          "The Philippine Tariff Act",
+          "The Labor Code of the Philippines"
+        ],
+        correct: 0,
+        explanation: "Republic Act No. 3765 (Truth in Lending Act) mandates transparency so borrowers understand net proceeds, finance charges, and true effective borrowing rates."
+      },
+      {
+        topic: "Zero Interest Property",
+        prompt: "10. If an account offers 0% interest (r = 0), what will the total maturity balance be on a ₱10,000 deposit after 5 years?",
+        options: [
+          "₱0.00",
+          "₱10,000.00",
+          "₱5,000.00",
+          "Undefined"
+        ],
+        correct: 1,
+        explanation: "When r = 0, interest earned is I = 10,000 × 0 × 5 = ₱0. The total balance remains equal to the principal: A = P + 0 = ₱10,000.00."
+      }
+    ];
+
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let selectedQuizOption = null;
+    let quizAnswerSubmitted = false;
+    let quizUserAnswers = [];
+
+    function renderQuizQuestion() {
+      const q = quizQuestions[currentQuizIdx];
+      document.getElementById('quizQuestionTracker').textContent = `Question ${currentQuizIdx + 1} of ${quizQuestions.length}`;
+      document.getElementById('quizLiveScore').textContent = `${quizScore} / ${currentQuizIdx}`;
+      document.getElementById('quizPrompt').textContent = q.prompt;
+
+      const progressPercent = ((currentQuizIdx + 1) / quizQuestions.length) * 100;
+      document.getElementById('quizProgressBar').style.width = progressPercent + '%';
+
+      const container = document.getElementById('quizOptionsContainer');
+      container.innerHTML = '';
+
+      q.options.forEach((optText, idx) => {
+        const label = document.createElement('label');
+        label.className = 'practice-option-label';
+        label.id = `quizOptLabel_${idx}`;
+        label.innerHTML = `
+          <input type="radio" name="quizOption" value="${idx}" onchange="selectQuizOption(${idx})">
+          <span>${optText}</span>
+        `;
+        container.appendChild(label);
+      });
+
+      const fbBox = document.getElementById('quizFeedbackBox');
+      fbBox.className = 'practice-feedback';
+      fbBox.style.display = 'none';
+
+      selectedQuizOption = null;
+      quizAnswerSubmitted = false;
+
+      document.getElementById('btnSubmitQuiz').style.display = 'inline-flex';
+      document.getElementById('btnNextQuiz').style.display = 'none';
+    }
+
+    function selectQuizOption(idx) {
+      if (quizAnswerSubmitted) return;
+      selectedQuizOption = idx;
+      const allLabels = document.querySelectorAll('#quizOptionsContainer .practice-option-label');
+      allLabels.forEach((lbl, i) => {
+        lbl.classList.toggle('selected', i === idx);
+      });
+    }
+
+    function submitQuizAnswer() {
+      if (selectedQuizOption === null) {
+        alert('Please choose an answer before submitting.');
+        return;
+      }
+      quizAnswerSubmitted = true;
+      const q = quizQuestions[currentQuizIdx];
+      const isCorrect = selectedQuizOption === q.correct;
+
+      if (isCorrect) {
+        quizScore++;
+      }
+
+      quizUserAnswers.push({
+        questionIdx: currentQuizIdx,
+        userSelected: selectedQuizOption,
+        isCorrect: isCorrect
+      });
+
+      document.getElementById('quizLiveScore').textContent = `${quizScore} / ${currentQuizIdx + 1}`;
+
+      const fbBox = document.getElementById('quizFeedbackBox');
+      fbBox.className = 'practice-feedback show ' + (isCorrect ? 'success' : 'error');
+      fbBox.innerHTML = `<strong>${isCorrect ? '&#10003; Correct!' : '&#10007; Incorrect.'}</strong> ${q.explanation}`;
+
+      const selectedLabel = document.getElementById(`quizOptLabel_${selectedQuizOption}`);
+      const correctLabel = document.getElementById(`quizOptLabel_${q.correct}`);
+
+      if (isCorrect) {
+        selectedLabel.classList.add('correct');
+      } else {
+        selectedLabel.classList.add('incorrect');
+        correctLabel.classList.add('correct');
+      }
+
+      document.getElementById('btnSubmitQuiz').style.display = 'none';
+      document.getElementById('btnNextQuiz').style.display = 'inline-flex';
+    }
+
+    function nextQuizQuestion() {
+      if (currentQuizIdx < quizQuestions.length - 1) {
+        currentQuizIdx++;
+        renderQuizQuestion();
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function showQuizResults() {
+      document.getElementById('quizActiveView').style.display = 'none';
+      const resultsScreen = document.getElementById('quizResultsScreen');
+      resultsScreen.classList.add('show');
+
+      const percent = Math.round((quizScore / quizQuestions.length) * 100);
+      document.getElementById('quizFinalScoreNum').textContent = `${quizScore}/${quizQuestions.length}`;
+      document.getElementById('quizFinalPercent').textContent = `${percent}%`;
+
+      const descEl = document.getElementById('quizPerformanceDesc');
+      if (percent >= 90) {
+        descEl.textContent = "Outstanding Performance! You demonstrate thorough mastery of financial interest formulas, deductive discounting, and effective rate computations.";
+      } else if (percent >= 70) {
+        descEl.textContent = "Commendable Work! You grasp the key distinctions between ordinary and deductive interest. Review the mistakes table below to polish remaining edge cases.";
+      } else {
+        descEl.textContent = "Good Practice Attempt. We recommend revisiting the Formula Reference and Step-by-Step Examples before re-testing your knowledge.";
+      }
+
+      // Populate review table
+      const tbody = document.getElementById('quizReviewTableBody');
+      tbody.innerHTML = '';
+
+      quizUserAnswers.forEach((ans, i) => {
+        const q = quizQuestions[ans.questionIdx];
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>${i + 1}</strong></td>
+          <td>${q.prompt}</td>
+          <td>${q.options[ans.userSelected]}</td>
+          <td><strong>${q.options[q.correct]}</strong></td>
+          <td style="color: ${ans.isCorrect ? 'var(--status-success-text)' : 'var(--status-error-text)'}; font-weight: 700;">
+            ${ans.isCorrect ? '&#10003; Correct' : '&#10007; Incorrect'}
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function restartQuiz() {
+      currentQuizIdx = 0;
+      quizScore = 0;
+      selectedQuizOption = null;
+      quizAnswerSubmitted = false;
+      quizUserAnswers = [];
+
+      document.getElementById('quizResultsScreen').classList.remove('show');
+      document.getElementById('quizActiveView').style.display = 'block';
+
+      renderQuizQuestion();
+    }
+
+    // Initialize quiz
+    renderQuizQuestion();
+  </script>
+</body>
+</html>
